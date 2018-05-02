@@ -17,10 +17,10 @@ server3.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'
 server4.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
-ose3-master1.test.example.com
+server1.ocp.local
 
 [lb]
-ose3-master1.test.example.com
+server1.ocp.local
 
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
