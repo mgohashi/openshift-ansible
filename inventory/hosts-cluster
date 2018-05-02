@@ -11,10 +11,10 @@ server1.ocp.local
 server1.ocp.local
 
 [nodes]
-server1.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+server1.ocp.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 server2.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 server3.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
-server4.ocp.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+server4.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
 server1.ocp.local
