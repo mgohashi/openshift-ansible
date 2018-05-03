@@ -19,11 +19,15 @@ server4.ocp.local openshift_node_labels="{'region': 'primary', 'zone': 'default'
 [nfs]
 server1.ocp.local
 
+[lb]
+server1.ocp.local
+
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
 masters
 nodes
 etcd
+lb
 nfs
 
 [OSEv3:vars]
@@ -1099,4 +1103,4 @@ openshift_clock_enabled=true
 # functioning cluster but would not be supported for production use
 #openshift_enable_unsupported_configurations=false
 
-#openshift_disable_check=disk_availability,memory_availability,docker_image_availability
+openshift_disable_check=disk_availability,memory_availability,docker_image_availability
