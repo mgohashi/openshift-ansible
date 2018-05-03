@@ -60,8 +60,8 @@ openshift_release=v3.9
 openshift_master_default_subdomain=apps.ocp.local
 
 #Set cluster_hostname to point at your load balancer
-openshift_master_cluster_hostname=apps.ocp.local
-
+openshift_master_cluster_hostname=console.ocp.local
+openshift_master_cluster_public_hostname=console.ocp.local
 
 
 ###############################################################################
@@ -561,14 +561,14 @@ debug_level=2
 #
 # By default metrics are not automatically deployed, set this to enable them
 openshift_metrics_install_metrics=true
-openshift_metrics_duration=180
-openshift_metrics_cassandra_storage_type=dynamic
-openshift_metrics_cassandra_pvc_prefix=metrics-cassandra
-openshift_metrics_cassandra_pvc_size=50Gi
-openshift_metrics_hawkular_nodeselector={"region":"infra", "zone":"default"}
-openshift_metrics_cassandra_nodeselector={"region":"infra", "zone":"default"}
-openshift_metrics_heapster_nodeselector={"region":"infra", "zone":"default"}
-openshift_metrics_hawkular_hostname=metrics.ocp.local
+#openshift_metrics_duration=180
+#openshift_metrics_cassandra_storage_type=dynamic
+#openshift_metrics_cassandra_pvc_prefix=metrics-cassandra
+#openshift_metrics_cassandra_pvc_size=50Gi
+#openshift_metrics_hawkular_nodeselector={"region":"infra", "zone":"default"}
+#openshift_metrics_cassandra_nodeselector={"region":"infra", "zone":"default"}
+#openshift_metrics_heapster_nodeselector={"region":"infra", "zone":"default"}
+#openshift_metrics_hawkular_hostname=metrics.ocp.local
 #
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
@@ -583,13 +583,13 @@ openshift_metrics_hawkular_hostname=metrics.ocp.local
 # path using these options would be "/exports/metrics".  "exports" is
 # is the name of the export served by the nfs server.  "metrics" is
 # the name of a directory inside of "/exports".
-#openshift_metrics_storage_kind=nfs
-#openshift_metrics_storage_access_modes=['ReadWriteOnce']
-#openshift_metrics_storage_nfs_directory=/exports
-#openshift_metrics_storage_nfs_options='*(rw,root_squash)'
-#openshift_metrics_storage_volume_name=metrics
-#openshift_metrics_storage_volume_size=10Gi
-#openshift_metrics_storage_labels={'storage': 'metrics'}
+openshift_metrics_storage_kind=nfs
+openshift_metrics_storage_access_modes=['ReadWriteOnce']
+openshift_metrics_storage_nfs_directory=/exports
+openshift_metrics_storage_nfs_options='*(rw,root_squash)'
+openshift_metrics_storage_volume_name=metrics
+openshift_metrics_storage_volume_size=10Gi
+openshift_metrics_storage_labels={'storage': 'metrics'}
 #
 # Option B - External NFS Host
 # NFS volume must already exist with path "nfs_directory/_volume_name" on
@@ -633,15 +633,15 @@ openshift_metrics_hawkular_hostname=metrics.ocp.local
 #
 # Currently logging deployment is disabled by default, enable it by setting this
 openshift_logging_install_logging=true
-openshift_logging_es_pvc_dynamic=false
-openshift_logging_es_pvc_storage_class_name=glusterfs-prod-block
-openshift_logging_es_pvc_prefix=logging-es
-openshift_logging_es_pvc_size=100Gi
-openshift_logging_curator_default_days=180
-openshift_logging_curator_nodeselector={"region": "prod", "zone": "infra"}
-openshift_logging_kibana_nodeselector={"region": "prod", "zone": "infra"}
-openshift_logging_es_nodeselector={"region": "prod", "zone": "infra"}
-openshift_logging_kibana_hostname=kibana.ocp.local
+#openshift_logging_es_pvc_dynamic=false
+#openshift_logging_es_pvc_storage_class_name=glusterfs-prod-block
+#openshift_logging_es_pvc_prefix=logging-es
+#openshift_logging_es_pvc_size=100Gi
+#openshift_logging_curator_default_days=180
+#openshift_logging_curator_nodeselector={"region": "prod", "zone": "infra"}
+#openshift_logging_kibana_nodeselector={"region": "prod", "zone": "infra"}
+#openshift_logging_es_nodeselector={"region": "prod", "zone": "infra"}
+#openshift_logging_kibana_hostname=kibana.ocp.local
 #
 # Logging storage config
 # Option A - NFS Host Group
@@ -650,13 +650,13 @@ openshift_logging_kibana_hostname=kibana.ocp.local
 # path using these options would be "/exports/logging".  "exports" is
 # is the name of the export served by the nfs server.  "logging" is
 # the name of a directory inside of "/exports".
-#openshift_logging_storage_kind=nfs
-#openshift_logging_storage_access_modes=['ReadWriteOnce']
-#openshift_logging_storage_nfs_directory=/exports
-#openshift_logging_storage_nfs_options='*(rw,root_squash)'
-#openshift_logging_storage_volume_name=logging
-#openshift_logging_storage_volume_size=10Gi
-#openshift_logging_storage_labels={'storage': 'logging'}
+openshift_logging_storage_kind=nfs
+openshift_logging_storage_access_modes=['ReadWriteOnce']
+openshift_logging_storage_nfs_directory=/exports
+openshift_logging_storage_nfs_options='*(rw,root_squash)'
+openshift_logging_storage_volume_name=logging
+openshift_logging_storage_volume_size=10Gi
+openshift_logging_storage_labels={'storage': 'logging'}
 #
 # Option B - External NFS Host
 # NFS volume must already exist with path "nfs_directory/_volume_name" on
