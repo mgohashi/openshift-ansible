@@ -41,7 +41,7 @@ ansible_user=root
 
 # If ansible_user is not root, ansible_become must be set to true and the
 # user must be configured for passwordless sudo
-#ansible_become=yes
+ansible_become=yes
 
 # Specify the deployment type. Valid values are origin and openshift-enterprise.
 #openshift_deployment_type=origin
@@ -560,7 +560,15 @@ debug_level=2
 # See: https://docs.openshift.com/enterprise/latest/install_config/cluster_metrics.html
 #
 # By default metrics are not automatically deployed, set this to enable them
-#openshift_metrics_install_metrics=true
+openshift_metrics_install_metrics=true
+openshift_metrics_duration=180
+openshift_metrics_cassandra_storage_type=dynamic
+openshift_metrics_cassandra_pvc_prefix=metrics-cassandra
+openshift_metrics_cassandra_pvc_size=50Gi
+openshift_metrics_hawkular_nodeselector={"region":"infra", "zone":"default"}
+openshift_metrics_cassandra_nodeselector={"region":"infra", "zone":"default"}
+openshift_metrics_heapster_nodeselector={"region":"infra", "zone":"default"}
+openshift_metrics_hawkular_hostname=metrics.ocp.local
 #
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
@@ -624,7 +632,16 @@ debug_level=2
 # Logging deployment
 #
 # Currently logging deployment is disabled by default, enable it by setting this
-#openshift_logging_install_logging=true
+openshift_logging_install_logging=true
+openshift_logging_es_pvc_dynamic=false
+openshift_logging_es_pvc_storage_class_name=glusterfs-prod-block
+openshift_logging_es_pvc_prefix=logging-es
+openshift_logging_es_pvc_size=100Gi
+openshift_logging_curator_default_days=180
+openshift_logging_curator_nodeselector={"region": "prod", "zone": "infra"}
+openshift_logging_kibana_nodeselector={"region": "prod", "zone": "infra"}
+openshift_logging_es_nodeselector={"region": "prod", "zone": "infra"}
+openshift_logging_kibana_hostname=kibana.ocp.local
 #
 # Logging storage config
 # Option A - NFS Host Group
@@ -834,7 +851,7 @@ debug_level=2
 
 # openshift_use_dnsmasq is deprecated.  This must be true, or installs will fail
 # in versions >= 3.6
-#openshift_use_dnsmasq=False
+openshift_use_dnsmasq=True
 
 # Define an additional dnsmasq.conf file to deploy to /etc/dnsmasq.d/openshift-ansible.conf
 # This is useful for POC environments where DNS may not actually be available yet or to set
@@ -898,7 +915,7 @@ debug_level=2
 #openshift_buildoverrides_json='{"BuildOverrides":{"configuration":{"apiVersion":"v1","kind":"BuildDefaultsConfig","forcePull":"true"}}}'
 
 # Enable service catalog
-#openshift_enable_service_catalog=true
+openshift_enable_service_catalog=true
 
 # Enable template service broker (requires service catalog to be enabled, above)
 #template_service_broker_install=true
@@ -924,7 +941,7 @@ debug_level=2
 #openshift_master_admission_plugin_config={"ProjectRequestLimit":{"configuration":{"apiVersion":"v1","kind":"ProjectRequestLimitConfig","limits":[{"selector":{"admin":"true"}},{"maxProjects":"1"}]}},"PodNodeConstraints":{"configuration":{"apiVersion":"v1","kind":"PodNodeConstraintsConfig"}}}
 
 # Configure usage of openshift_clock role.
-#openshift_clock_enabled=true
+openshift_clock_enabled=true
 
 # OpenShift Per-Service Environment Variables
 # Environment variables are added to /etc/sysconfig files for
@@ -1085,3 +1102,5 @@ debug_level=2
 # Enable unsupported configurations, things that will yield a partially
 # functioning cluster but would not be supported for production use
 #openshift_enable_unsupported_configurations=false
+
+openshift_disable_check=disk_availability,memory_availability,docker_image_availability
