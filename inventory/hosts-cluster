@@ -1099,4 +1099,4 @@ openshift_clock_enabled=true
 # functioning cluster but would not be supported for production use
 #openshift_enable_unsupported_configurations=false
 
-openshift_disable_check=disk_availability,memory_availability,docker_image_availability
+#openshift_disable_check=disk_availability,memory_availability,docker_image_availability
